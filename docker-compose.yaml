@@ -1,0 +1,44 @@
+services:
+  prosody:
+    image: prosodyim/prosody:13.0
+    container_name: xmpp-prosody
+    user: root
+    restart: unless-stopped
+    ports:
+      - "5222:5222"
+      - "5269:5269"
+      - "5280:5280"
+      - "5281:5281"
+    volumes:
+      - ./data/prosody:/var/lib/prosody
+      - ./config/prosody:/etc/prosody:ro
+      - ../npm/data/letsencrypt:/etc/letsencrypt:ro
+      - ./config/prosody/modules:/usr/lib/prosody/custom-modules:ro
+    environment:
+      - XMPP_DOMAIN=your_server.ru
+      - TZ=Europe/Saratov
+      - PROSODY_LOGLEVEL=info
+    networks:
+      - xmpp-net
+      - npm-proxy 
+
+  coturn:
+    image: coturn/coturn:latest
+    container_name: xmpp-coturn
+    user: root
+    restart: unless-stopped
+    network_mode: "host"
+    volumes:
+      - ./config/coturn/turnserver.conf:/etc/coturn/turnserver.conf:ro
+      - ../npm/data/letsencrypt:/etc/letsencrypt:ro
+    entrypoint: []  
+    command: ["turnserver", "-c", "/etc/coturn/turnserver.conf"]
+
+
+networks:
+  xmpp-net:
+    driver: bridge
+
+  npm-proxy: 
+    external: true
+    name: npm-proxy  
