@@ -3,7 +3,9 @@ admins = { "admin@your_server.ru" }
 plugin_paths = { "/usr/lib/prosody/custom-modules" }
 
 -- 2. Логи
-log = "*console"
+log = {
+      { levels = { min = "info" }, to = "console" };
+}
 
 -- 3. Настройки безопасности
 consider_bosh_secure = true
@@ -44,7 +46,7 @@ modules_enabled = {
     "private", "blocklist", "vcard4", "vcard_legacy", "version",
     "uptime", "time", "ping", "pep",
     "admin_adhoc", "admin_shell",
-    "muc", "invites", "invites_register",
+    "invites", "invites_register",
     "carbons", "bookmarks", "csi_simple", "smacks", "mam",
     "http_file_share",  -- Для файлов
     "external_services", -- Для звонков (TURN)
@@ -256,7 +258,9 @@ Component "conference.your_server.ru" "muc"
     }
     muc_room_default_persistent = true
     muc_room_default_public = true
-    muc_room_default_members_only = false
+    muc_room_default_members_only = true
+    muc_room_default_language = "ru"
+    muc_room_default_history_length = 20
 
     -- Хранить последние 500 сообщений в каждой комнате
     muc_log_by_default = true;
