@@ -4,7 +4,7 @@ A complete, production-ready XMPP (Jabber) server setup with Prosody and Coturn 
 
 ## 🚀 Features
 
-- **Prosody 13.0** - Modern XMPP server
+- **Prosody 13.0++** - Modern XMPP server
 - **Coturn** - TURN/STUN server for audio/video calls
 - **Converse.js** - Built-in web client with OMEMO encryption
 - **HTTP File Upload** - Share files up to 100MB
