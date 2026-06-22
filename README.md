@@ -52,6 +52,8 @@ Make sure the following ports are open on your firewall/router and forwarded to 
    - config/prosody/prosody.cfg.lua
    - config/coturn/turnserver.conf
    - user.sh
+   - sendxmpp.sh
+   - sendxmppfile.sh
    ```
 
 5. **Generate Secrets**
@@ -114,6 +116,15 @@ Manage accounts easily with the user.sh script:
 ./user.sh -d <user>    # Delete user
 ./user.sh -l           # List all users
 ```
+
+## Sending text and files on behalf of the bot
+
+Its easy to send files and text on behalf of the bot, through scripts:
+```bash
+./sendxmpp.sh --help
+./sendxmppfile.sh <Recipient's JID> <path to file>
+```
+
 ## Web Access
 
 Once the stack is running, access the web chat via:
