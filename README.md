@@ -117,6 +117,13 @@ Manage accounts easily with the user.sh script:
 ./user.sh -l           # List all users
 ```
 
+## Module Updates
+
+Keep your Prosody modules up to date with the update_all_modules.sh script:
+```bash
+./update_all_modules.sh   # Update all installed modules at once
+```
+
 ## Sending text and files on behalf of the bot
 
 Its easy to send files and text on behalf of the bot, through scripts:
