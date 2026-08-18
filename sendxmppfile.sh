@@ -60,11 +60,17 @@ curl -s -o /dev/null -w "HTTP status: %{http_code}\n" -X PUT "$PUT_URL" \
     --data-binary @"$FILE_PATH"
 echo ""
 
+if [[ "$TO_JID" == *"@conference."* ]]; then
+    MSG_TYPE="groupchat"
+ else
+     MSG_TYPE="chat"
+fi
+
 curl -s -o /dev/null -w "HTTP status: %{http_code}\n" \
     -u "$CREDENTIALS" \
     -H "Content-Type: application/json" \
     -d "{
-        \"kind\": \"message\",
+        \"type\": \"$MSG_TYPE\",
         \"to\": \"$TO_JID\",
         \"oob_url\": \"$GET_URL\"
     }" \
