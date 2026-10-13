@@ -56,12 +56,12 @@ modules_enabled = {
 -- Настройка раздачи файлов
 http_files_dir = "/var/lib/prosody/http_files"
 http_files_path = "/files"  -- URL путь к файлам
-
+http_file_share_size_limit = 104857600 -- 100 mb limit
 -- 9. HTTP File Upload 
 http_file_share = {
     base_url = "https://your_server.ru:5281";
 
-    -- Размер файла до 100 МБ
+    -- Размер файла до 100 МБ (deprecated)
     max_file_size = 104857600;
 
     -- Директория для хранения
@@ -144,7 +144,7 @@ conversejs_tags = {
     -- [[<link rel="stylesheet" href="https://mysait.ru/css/conversejs_custom.css">]];
 
     -- OMEMO online lib
-    [[<script src="https://cdn.conversejs.org/3rdparty/libsignal-protocol.min.js"></script>]];
+    [[<script src="https://chat.conversejs.org/3rdparty/libsignal-protocol.min.js"></script>]];
     -- OMEMO offline
     -- [[<script src="/files/libsignal-protocol.min.js"></script>]];
 
