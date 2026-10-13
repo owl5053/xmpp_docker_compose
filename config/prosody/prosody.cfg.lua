@@ -61,9 +61,6 @@ http_file_share_size_limit = 104857600 -- 100 mb limit
 http_file_share = {
     base_url = "https://your_server.ru:5281";
 
-    -- Размер файла до 100 МБ (deprecated)
-    max_file_size = 104857600;
-
     -- Директория для хранения
     upload_path = "/var/lib/prosody/http_upload";
 
