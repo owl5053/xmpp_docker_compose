@@ -252,17 +252,17 @@ Component "conference.your_server.ru" "muc"
         "muc_mam",
         "muc_bot"           -- Bot module (allows posting to MUC without joining)
     }
+    -- Default settings for new rooms
     muc_room_default_persistent = true
     muc_room_default_public = true
     muc_room_default_members_only = true
-    muc_room_default_language = "ru"
-    muc_room_default_history_length = 20
+    -- muc_room_default_language = "ru"
 
-    -- Keep the last 500 messages in each room
-    muc_log_by_default = true;
-    muc_log_all_rooms = true;
-    -- Archive limit (in messages)
-    max_archive_messages = 1000;
+    -- MAM archiving settings (the most important part for history)
+    muc_log_by_default = true          -- Enable archiving for new rooms by default
+    log_all_rooms = true               -- Force archiving for all rooms (overrides per-room setting)
+    muc_log_expires_after = "1y"       -- How long to keep history (e.g. one year). "never" = forever.
+    max_archive_query_results = 50     -- How many messages a client can request at once (default 50)
 
     -- Bot settings for MUC
     known_bots = { "bot@your_server.ru" }
